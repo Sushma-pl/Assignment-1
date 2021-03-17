@@ -16,25 +16,25 @@ def roll_the_dice(Event):
     #do this experiment 100000 times 
     for i in range(n_simulation):
 
-        #Roll dice three times 
-        die1=random.randint(1,6)
-        die2=random.randint(1,6)
-        die3=random.randint(1,6)
+        # three  dice are rolled simutaneously times 
+        X1=random.randint(1,6)
+        X2=random.randint(1,6)
+        X3=random.randint(1,6)
 
 
-        #event E = getting 4 on third throw of die
+        #event E i.e X3 = 4
         if Event=='E':
-            if die3==4:
+            if X3==4:
                 count+=1
 
-        #event F = getting 6 and 5 on first and second throw of die resp.       
+        #event F i.e  X1==6 and X2==5     
         elif Event=='F':
-            if die1==6 and die2==5 :
+            if X1==6 and X2==5 :
                 count+=1
         
-        #to calculate E and F i.e (6,5,4)
+        #to X1==6 and X2==5 and X3==4
         else :
-            if die1==6 and die2==5 and die3==4:
+            if X1==6 and X2==5 and X3==4:
                 count+=1
 
     return count/n_simulation
@@ -42,7 +42,7 @@ def roll_the_dice(Event):
 a = round(roll_the_dice('E and F'),5)  #P(E and F)
 b = round(roll_the_dice('F'),5)        #P(F)
 
-print("Probability of getting 4 at third roll, Pr(E) = ",round(roll_the_dice('E'),5))
-print("Probability of getting 6 and 5 on first and second roll resp., Pr(F) = ",round(roll_the_dice('F'),5))
-print("Probability of (6,5,4), Pr(E and F) = ",round(roll_the_dice('E and F'),5))
-print('probability P(E|F) = ',round(a/b,5))
+print("Probability of getting 4 at third roll, Pr(X3 = 4) = ",round(roll_the_dice('E'),5))
+print("Probability of getting 6 and 5 on first and second roll resp., Pr( X1=6 ,X2=5) = ",round(roll_the_dice('F'),5))
+print("Probability of (6,5,4), Pr(X1=6 , X2=5 , X3=4) = ",round(roll_the_dice('E and F'),5))
+print('probability P(X3= 4| X2=5 , X1= 6) = ',round(a/b,5))
