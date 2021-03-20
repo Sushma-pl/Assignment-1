@@ -1,1 +1,0 @@
-probabilty and random variable
