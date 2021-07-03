@@ -1,0 +1,558 @@
+\documentclass{beamer}
+\usepackage{listings}
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+\usepackage{gensymb}
+\usepackage{blkarray}
+\usepackage{subcaption}
+\usepackage{url}
+\usepackage{tikz}
+\usepackage{tkz-euclide} % loads  TikZ and tkz-base
+%\usetkzobj{all}
+\usetikzlibrary{calc,math}
+\usepackage{float}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\usepackage[export]{adjustbox}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{bm}
+\hypersetup{
+    colorlinks = true,
+    linkbordercolor = {white},
+    linkcolor={red},
+    citecolor={green},
+    filecolor={blue},
+	menucolor={red},
+	runcolor={cyan},
+	urlcolor={blue},
+	breaklinks=true
+}
+\usetikzlibrary{automata, positioning}
+\usetheme{Boadilla}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\mbf}{\mathbf}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\providecommand{\abs}[1]{\vert#1\vert}
+
+\title{Project Presentation}
+\author{Sushma}
+\date{CS20BTECH11051}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Title and Authors}
+\begin{block}{Title}
+LEO Small Satellite Constellations for 5G and Beyond 5G communications
+\end{block}
+\begin{block}{Date of Publication}
+8 October , 2020
+\end{block}
+\begin{block}{Authors}
+\begin{itemize}
+    \item ISRAEL LEYVA-MAYORGA , (Member, IEEE)
+    \item  BEATRIZ SORET , (Member, IEEE),
+    \item  MAIK RÖPER , (Graduate Student Member, IEEE),
+    \item DIRK WÜBBEN , (Senior Member, IEEE),
+    \item BHO MATTHIESEN , (Member, IEEE),
+    \item ARMIN DEKORSY, (Senior Member, IEEE),
+    \item  PETAR POPOVSKI  (Fellow, IEEE)
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+ \begin{block}{Abstract}
+\begin{itemize}
+     \item The next frontier towards truly ubiquitous connectivity is the use of Low Earth Orbit (LEO)
+     small-satellite constellations to support 5G and Beyond-5G (B5G) networks.
+\end{itemize}     
+     Here we will discuss about following :
+     \begin{itemize}
+    \item discuss about characteristics and challenges of LEO constellation
+    \item Analysis and comparison of propagation delays ,achievable data rates ,Doppler shift in every physical link of satellite constellation.
+    \item The identification of the most relevant enabling technologies at the physical layer, the radio access and the radio slicing.
+    \item In the physical layer, the evaluation of the performance gains of adaptive coding and modulation and the use of multiple-input multiple-output (MIMO).
+\end{itemize}
+\end{block}   
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Key Terms}
+\begin{block}{Terms}
+\begin{itemize}
+    \item  \textbf{Pass}  - A pass is the period in which
+a satellite is available for communication with a particular
+ground position.(few minutes for a LEO satellite, depending on the elevation angle and the relative positions between terminals) 
+   \item \textbf{Satellite Constellations} - Group of satellites
+organised in different orbital planes , deployed at same altitude and inclination.
+    \item \textbf{Ground terminal} - to denote any communication between device at ground level.
+    \item \textbf{Latency} - The total latency is a combination of processing delay, queueing delay, transmission time, and propagation delay, being the latter determined by the physical distance between source and destination.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Advantages of LEO}
+%\frametitle{Advantages}
+\begin{block}{Advantages}
+Using LEO constellation with  5G NR provide nearly global coverages and support for :
+\begin{itemize}
+        \item enhanced mobile broadband (eMBB)-to offer increased user data rates
+        \item massive Machine-Type Communications (mMTC) - to enable a wide range of Internet of Things (IoT) applications operating over vast geographical areas
+        \item Ultra-Reliable Communications (URC) -  provide one-way latency guarantees in the order of 30 ms [2], with typical 2 ms propagation delays between ground and LEO.
+\end{itemize}
+\end{block}
+% \begin{block}{Advantage}
+% \begin{itemize}
+%     
+% \item LEO
+% satellites over long distances present an advantage in propa
+% gation
+% delay with respect to terrestrial communications,because electromagnetic wave propogate at the speed of light in space while propagation speed in optic fibre is 1.47 times slower .
+% \end{itemize}
+
+% \end{block}
+\end{frame}
+% \begin{frame}{Frame Title}
+    
+% \end{frame}
+
+\begin{frame}{Characterstics of LEO}
+\begin{block}{Characterstics}
+\begin{itemize}
+\item they are deployed at a altitude of around 600km with typical elevation angle of 30$\degree$ , has ground coverage of 0.45\% of Earth surface.
+ \item Due to the low altitude of deployment, LEO satellites can communicate with diverse types of ground terminals, such as dedicated ground stations
+(GSs), 5G gNBs, ships and other vehicles, or Internet of
+ Things (IoT) devices.
+\end{itemize}
+These features indicate  the need for a relatively dense constellation to ensure that any ground terminal is always covered by, at least,
+one satellite. Therefore, global commercial deployments usually consist of more than a hundred satellites . Example Starlink -12000 to 42000 satelites .
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Element in space mission}
+There are three element in every space mission. 
+\begin{itemize}
+    \item space segment - the satellite constellation 
+    \item ground segment - set of GSs, which are responsible of major control and management tasks of the space segment, plus the ground networks and other mission control centers
+    \item user segment - rest of communication device on ground level ,including IoT devices (ground terminal) 
+\end{itemize}
+\end{block}
+\begin{block}{communication terms}
+\begin{itemize}
+    \item Free space optical(FSO) and Tradition Radio frequency (RF) , used for communication b/w satellites
+    as well b/w satellite and ground.
+    \item FSO employs ultra -narrow beams to combat the increased attenuation of high carrier frequencies with distances , offering increased transmission ranges, higher data rates, and lower interference levels .But on downside , FSO is highly susceptible to atmospheric effects and pointing errors
+\end{itemize}
+\end{block}
+\end{frame}
+ 
+\begin{frame}
+\begin{block}{continued.....}
+\begin{itemize}
+ 
+     \item RF links present wider beams that enable
+neighbor discovery procedures, along with the integration
+into terrestrial RF-based systems , 
+Also, RF links are crucial as
+fallback solution if FSO communication is infeasible, for
+example, due to positioning and pointing errors 
+, traffic overload, or bad weather conditions.
+\end{itemize}
+Therefore , a hybrid RF-FSO system has great potential to enhance
+network flexibility and reliability.
+\end{block}
+\begin{block}{Challenges}
+there are main two challenges :
+\begin{itemize}
+    \item the constellations are dynamic, usually entalling slight asymmetries that are aimed
+at minimizing the use of propellant when avoiding physical
+collisions between satellites at crossing points. Therefore,
+dynamic rather than fixed mechanisms must be put in place to
+create and maintain the links.
+\item Link experience a much larger Doppler Shift than those found in terrestial system .
+\end{itemize}
+\end{block}    
+\end{frame}
+
+\begin{frame}{characterstics of LEO vs GEO constellation}
+\begin{figure}
+    \centering
+    \includegraphics[height=0.8\textheight, width=0.8\textwidth]{fig1.png}
+    \label{fig:1}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Connectivity}
+    There are three main date traffics in a LEO constellation.
+    \begin{itemize}
+        \item user data
+        \item control data
+        \item telemetry and telecommand data (TMTC)
+    \end{itemize}In the downlink, telemetry parameters describing
+the status, configuration, and health of the payload and
+subsystems are transmitted. In the uplink, commands are
+received on board of the satellite to control mission operations
+and manage expendable resources
+    
+TMTC are different from network control data and are exchanged between the GSs and the satellites.\\TMTC often use seprate antennas    and frequency bands .
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Physical links}
+    Physical links divided into two :
+    \begin{itemize}
+        \item inter-satellite links (ISLs)
+        \item ground-to-satellite links (GSLs) , also known as Feeder links . 
+    \end{itemize}
+\end{block}
+\begin{block}{GSLs}
+GSLs are mainly dedicated between GS and the satellite.The availability of GSLs and satellite pass is determined by ground coverage and  orbital velocity.
+\end{block}
+\begin{block}{ISLs}
+ISLs are further devide :
+\begin{itemize}
+    \item intra ISLs - for satellites in same plane 
+    \item inter ISLs - for satellites in different orbital planes
+\end{itemize}
+ISLs between the satellite in orbital planes moving in opposite direction are known as cross-stream ISLs . 
+\end{block}
+\end{frame}
+
+\begin{frame}{Walker star LEO constellation}
+\begin{figure}
+    \centering
+    \includegraphics[height=0.8\textheight, width=0.8\textwidth]{fig2.png}
+    % \label{fig:1}
+\end{figure}
+\end{frame}
+
+
+
+\begin{frame}{GSls and ISLs in term of propogation dalay , Doppler effect and achievable data rates }
+\textbf{Communication}
+\begin{table}[]
+    \centering
+    \begin{tabular}{c|c}
+       Parameter  &  Setting \\
+    Carrier frequency for GSL downlink & f_c = 20 GHz \\
+    Carrier frequency for GSL uplink and ISL & f_c = 30GHz \\
+    Channel bandwith & B = 400 MHz \\
+    EIRP density for satellites & 4 dBW/MHz \\
+    Antenna gain for satellites & 38.5 dBi \\
+    Transmission power for ground terminals & 33 dBm \\
+    Transmitter antenna gain for ground terminals & 43.2 dBi\\
+    Receiver antenna gain for ground terminals & 39.7 dBi \\
+    Minimum elevation angle & 30 $\degree$ \\
+    Atmospheric Loss & 0.5 dB \\
+    Scintillation loss & 0.3 dB \\
+    Noise Temperature & 354.81 K \\
+    \end{tabular}
+    % \caption{Parameter Setting}
+\end{table}
+\end{frame}
+
+\begin{frame}
+\textbf{Satellite Constellation}
+\begin{table}[]
+    \centering
+    \begin{tabular}{c|c}
+        Number of orbital planes  & P $\in$ $\{7,12\}$  \\
+        Number of satellite per orbital plane  & N $\in \{20,40\}$ \\
+        Altitude of orbital plane p $\in \{1,2,3....,P\}$ & 600 + 10(p-1) km \\
+        Longitude of orbital plane p & (180(p-1)/P)\degree
+    \end{tabular}
+    \caption{Parameter Setting}
+    \label{tab:my_label}
+\end{table}
+\end{frame}
+
+\begin{frame}
+  \begin{figure}
+    \centering
+    \includegraphics[height=0.8\textheight, width=0.8\textwidth]{fig4.png}
+    % \label{fig:1}
+\end{figure}  
+\end{frame}
+
+\begin{frame}
+\begin{enumerate}
+    \item The results presented in figure 
+for the GSL rates were obtained by distributing $10^5$ users over the Earth's surface within the ground coverage of a satellite following a homogeneous Poisson point process (PPP).
+   \item  we assume the condition so that the gain
+at each established link is the maximum antenna gain.
+\item Doppler shift in each physical link is calculated by 
+ $f = \frac{v f_{c}}{c} $ where v is the relative speed between transmitter and receiver and $f_c$ is the carrier frequency.
+ propagation delay of less than 4 ms are observed in GSLs and ISLs which are unattendable in GEO constellation.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \begin{figure}
+    \centering
+    \includegraphics[height=0.8\textheight, width=0.8\textwidth]{fig5.png}
+    % \label{fig:1}
+\end{figure}  
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+    \item the rates are
+chosen from an infinite set of possible values to be equal to the capacity of an additive white Gaussian noise (AWGN) channel at specific time instants.
+\item the 95th percentile of
+the rates is similar to the median in the GSLs and intra-plane
+ISLs but much greater for the inter-plane ISLs.
+\item Besides contributing to the Doppler shift, the movement of
+the satellites complicates the implementation of inter-plane
+ISLs by creating frequent and rapid changes in the inter-plane
+ISLs and greatly reducing the time a specific inter-plane ISL
+can be maintained, termed inter-plane contact times.
+\item Hence, these links require frequent handovers, which involves neighbor discovery and selection (matching), as well as signaling
+for connection setup.
+Despite all these challenges implementing the inter-plane  ISLs comes with massive benefits. 
+\end{itemize}    
+\end{frame}
+
+\begin{frame}
+\begin{block}{Logical link}
+    Logical link is the path from source transmitter and end reciever . Data travels over many different physical links which may not be known by two end points . In our case , there are two end point Satellite[S] and Ground[G] which give rise to four logical link.
+    \begin{itemize}
+        \item Ground to Ground [G2G] - Classical use of network,also used for handover ,rooting and coordination of delays 
+        \item Ground to Satellite[G2S] - used for maintenance and control operation initiated by ground station
+        \item Satellite to Ground[S2G]- Relevant when the satellites
+collect and transmit application data, such as in Earth observation, but also needed for handover and link establishment with GSs, radio resource management (RRM), fault detection, and telemetry
+        \item Satellite to Satellite[S2S]-used for satellite related control application , and also used for some autonomous operation in space segment.
+    \end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Four Logical links}
+\begin{figure}
+    \centering
+    \includegraphics[height=0.8\textheight, width=0.8\textwidth]{fig3.png}
+    % \label{fig:1}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Applications}
+
+\begin{itemize}
+        \item One application is to use as multi hop relay network to increase the coverage of IoT deployment in rural or remote area where cellular and relay network are out of range.
+        \item This end-to-end application is possible through G2G logical link. 
+    \item LEO constellations for Earth and/or
+space observation, both of which are native applications to
+satellite networks. 
+\item In these, the satellites are equipped with
+cameras and sensors that can operate in the visible, near infrared,
+thermal or microwave spectral domain. 
+\item Naturally,
+the S2G is needed to retrieve the information in ground.
+Besides, the S2S link can be exploited for cooperation
+among satellites
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Integration of LEO into 5G and beyond 5G}
+\begin{block}{A:3GPP Ongoing Work}
+\begin{itemize}
+    \item  3GPP is working in the integration of Non-Terrestrial Networks (NTN) in future releases of 5G NR
+    \item Dedicated study also going on to introduce narrowband IoT and evolved MTC supprt with satellites.
+\end{itemize}
+\end{block}
+\begin{block}{5G Satellite Implementation}
+\begin{itemize}
+    \item Transparent - satellite merely serve as relay toward the ground 
+    \item Regenerative payload  - satellites are a fully or partially functional gNBs,also enables the
+use of the 5G logical interface between gNBs, the so-called
+Xn, to connect distant gNBs through the constellation. 
+\item 3GPP considers two options of multi-connectivity
+in NTN, having the user equipment (UE) connected to one
+satellite and one terrestrial network, or to two satellites
+\end{itemize}
+
+\end{block}
+\end{frame}
+
+\begin{frame}
+ \begin{block}{Connection of 5G UEs to constellation}
+ \begin{itemize}
+     \item The first option is through a gateway
+(i.e., a relay node), which uses the constellation for backhaul.
+The big advantage of this approach is that legacy
+UEs are fully supported and no additional RF chain is
+required
+\item The second option is having the UEs to communicate
+directly with the satellite or the HAP.With this second
+option, the coverage of the constellation is maximized, but
+the limited transmission range of the UEs becomes the main
+challenge.
+ \end{itemize}
+ \end{block}   
+\end{frame}
+
+\begin{frame}
+\begin{block}{B:Physical Layer}
+\begin{itemize}
+    \item The waveform defines the physical shape of the signal that carries the modulated information  through the channel.
+    \item In NR, the defined waveform is based on Orthogonal Frequency Division Multiplexing (OFDM),which is very sensitive to Doppler shift.Several alternatives like UFMC , GFDM , FBMC are used ,which allow higher robustness against Doppler shift.
+    \item NR supports Quadrature Amplitude Modulation (QAM) schemes. Within QAM, Binary Phase-Shift Keying (BPSK) and Quadrature Phase-Shift Keying (QPSK), are often used in satellite communications, although Amplitude and Phase Shift Keying (APSK) is the preferred technique in LEO commercial missions . The main benefit of APSK in space is its low peak-to-average power ratio (PAPR), which makes it suitable when using power amplifiers with nonlinear characteristic.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Evolution of achievable rate for GSL downlink}
+\begin{figure}
+    \centering
+    \includegraphics[height=0.8\textheight,width=0.8\textwidth]{fig6.png}
+    % \label{fig:1}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Evolution of achievable rate for GSL downlink}
+\begin{enumerate}
+    \item The first is the optimal pass, where the shift
+in longitude between the ground terminal and satellite is
+$\beta = 0$ and, the second one, is a typical pass where $\beta = 4\degree$
+\item the peak of the achievable rate occurs at
+around 2 minutes after the satellite establishes the GSL with
+the ground terminal at $\beta = 0\degree$ This is because the duration
+of the optimal pass is 4.1 minutes in this example.
+\item In comparison, the pass of the
+ground terminal at $\beta =   4\degree$ is around 0.8 minutes shorter and
+its peak achievable rate is around 1 bps/Hz lower for both
+considered power levels, which is significant.
+\end{enumerate}
+\end{block}
+
+\end{frame}
+\begin{frame}
+  \begin{block}{MIMO}
+  \begin{itemize}
+      \item enable the high data rate communications, also increased spectral eficiency in eMBB traffic through
+LEO constellations
+\item In particular, exploiting the full MIMO gain requires a large array aperture, i.e., large distances between transmit and/or receive antennas.
+\item In the space segment, this separation can be implemented
+by cooperatively transmitting to a GS from multiple
+satellites, lying in close formation.
+ \end{itemize}
+\end{block}  
+\end{frame}
+
+\begin{frame}{Achievable rate for NS satellites in close formation and
+simultaneously transmitting towards a GS.}
+\begin{figure}
+    \centering
+    \includegraphics[height=0.8\textheight,width=0.8\textwidth]{fig7.png}
+    % \label{fig:1}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Data used }
+    \begin{enumerate}
+        \item The achievable rate of N$_$s satellites
+transmitting cooperatively to a single GS as a function of
+the sum EIRP of all NS satellites is shown.
+\item Each of these satellites is equipped with
+$N_t$ = 12/$N_S$ antennas ,GS is equipped with a uniform
+linear array (ULA) consisting of 100 antennas having
+a gain of $GR_x$ = 20 dBi each , and and GS antennas are spaced
+$\lambda_c$/2 = 7.5mm apart.
+\item The ULAs axis is aligned with the ground
+trace of the satellites. The downlink transmission takes place
+in the Ka-Band at a carrier frequency of $f_c$ = 20 GHz
+\item Observation - achievable rate increases
+with the number of transmitting satellites 
+\item In addition, this
+joint transmission allows to form very narrow beams which leads to better spatial separation and, thus, higher spectral
+efficiency when serving different GSs located geographically
+close to each other on the same time-frequency
+resources
+    \end{enumerate}
+\end{frame}
+\begin{frame}
+    \begin{block}{Radio Access}
+    \begin{itemize}
+        \item  principal RA protocols : grant-based and grant free
+        \item Grant-based RA is the go-to
+solution in 5G, which is a two-step random
+access procedure can redude  the excessive delay and time
+alignment  in satellite
+communications.
+\item grant-free RA 
+            \begin{itemize}
+                \item transmission of short and infrequent data packets.
+                \item non-orthogonal medium
+access (NOMA) techniques that incorporate successive
+interference cancellation (SIC) is used. 
+\item  in case of intra-plane ISLs , we can use some fixed access schemes like FDMA and CDMA.
+            \item while in case inter-plane ISLs , the predictability of the
+constellation geometry can still be exploited by a centralized
+entity  to allocate orthogonal resources for
+inter-plane communication.
+            \end{itemize}
+
+    \end{itemize}
+       
+    \end{block}
+\end{frame}
+\begin{frame}
+  \begin{block}{Radio slicing}
+\begin{enumerate}
+    \item Network slicing  is a key 5G feature to support heterogeneous services and to
+provide performance guarantees by avoiding performance
+degradation due to other services.
+\item In the Radio Access Network
+(RAN), the conventional approach to radio slicing
+is to allocate orthogonal radio resources at the expense of
+a lower network eficiency. Instead, non-orthogonal slicing
+may bring benefits in terms of resource utilization at the
+expense of a reduced predictability in the QoS.
+\item  non-orthogonal slicing in the RAN, in the form of NOMA
+for heterogeneous services, may lead to better performance
+trade-offs than orthogonal slicing in terrestrial communications
+\end{enumerate}
+\end{block}  
+\end{frame}
+\begin{frame}
+\begin{block}{Conclusion}
+\begin{itemize}
+    \item In this paper, we described the main opportunities and
+connectivity challenges in LEO small-satellite constellations.
+\item we characterized the physical links in LEO constellations
+in terms of propagation delay, Doppler shift, and
+achievable data rates
+\item Furthermore, we provided an overview and taxonomy for
+the logical links, in connection with the used physical links
+and relevant use cases.
+\item we discussed about several
+PHY/MAC and radio slicing enabling technologies and outlined
+their role in supporting 5G connectivity through LEO
+satellites.
+    
+\end{itemize}
+\end{block}
+\end{frame}
+\end{document}
